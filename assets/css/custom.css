@@ -1,0 +1,18 @@
+.hand{
+    cursor: pointer;
+}
+
+.arrow{
+    position: relative;
+}
+
+.arrow div{
+    position: absolute;
+    right: 8px;
+    top: 3px;
+}
+
+.arrow div i{
+    display: block;
+    cursor: pointer;
+}

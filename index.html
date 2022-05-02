@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- <script src="scripts/models/product.js"></script>
+    <script src="scripts/utils/constants.js"></script> -->
+    <!-- <script src="scripts/services/product_operations.js"></script> -->
+    <script src="scripts/controllers/productctrl.js" type="module"></script>
+</head>
+<body>
+    <div class='container'>
+
+        <h2 class='alert-info text-center'>Product CRUD</h2>
+        <div class='form-group'>
+            <label for="">Id</label>
+            <input id="id" class='form-control' type="text" placeholder="Type Id Here">
+        </div>
+        <div class='form-group'>
+            <label for="">Name</label>
+            <input id="name" class='form-control' type="text" placeholder="Type Name Here">
+        </div>
+        <div class='form-group'>
+            <label for="">Description</label>
+            <textarea id="description" class='form-control' rows="5" cols="20"  placeholder="Type Desc  Here"> </textarea>
+        </div>
+        <div class='form-group'>
+            <label for="">Date</label>
+            <input id="date" class='form-control' type="date" >
+        </div>
+        <div class='form-group'>
+            <label for="">URL</label>
+            <input id="url" class='form-control' type="url" >
+        </div>
+        <div class='form-group'>
+            <label for="">Price</label>
+            <input id="price" min="1" max="100" value="1" class='form-range' type="range" >
+            <output>10</output>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <label for="">Search</label>
+                <select id="box1" onchange="changeSearch()">
+                    <option value="1">Search By Price</option>
+                    <option value="2">Search By Name</option>
+                </select>
+                <input class='form-control' id='searchbox' type="text" placeholder="Type Price to Search">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="search" class="btn btn-primary">Search It</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Modal Window Code  Ends Here-->
+        <div class='form-group'>
+            <button id="add" class='btn btn-primary'><i class="fa-solid fa-circle-plus"></i> Add</button>
+            <button id="delete" class='btn btn-danger'><i class="fa-solid fa-trash-can"></i> Delete</button>
+            <button id="update" class='btn btn-info'>Update</button>
+            <button type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class='btn btn-warning'><i class="fa-brands fa-searchengin"></i> Search</button>
+            <!-- <button class='btn btn-success'>Save</button>
+            <button class='btn btn-dark'>Load</button> -->
+            <!-- <button id="sort" class='btn btn-info'>Sort</button> -->
+            <button id="save" class='btn btn-secondary'>Save to Local</button>
+            <button id="load" class='btn btn-warning'>Load From Local</button>
+            <button class='btn btn-danger'>Clear All</button>
+        </div>
+        <h3> Total Records <span id="total"></span>    Mark Records <span id="mark"></span>  UnMark Records <span id="unmark"></span></h3>
+        <table class='table table-bordered'>
+            <thead class='table-dark'>
+                <tr>
+                    <th>Id</th>
+                    <th class='arrow'>Name <div><i name="ascending" class="fa-solid fa-angle-up sortAsceDesc"></i><i name="descending" class="fa-solid fa-angle-down sortAsceDesc"></i></div></th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>URL</th>
+                    <th class='arrow'>Price <div><i name="highToLow" class="fa-solid fa-angle-up sortAsceDesc"></i><i name="LowToHigh" class="fa-solid fa-angle-down sortAsceDesc"></i></div></th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            <tbody id="products"></tbody>
+        </table>
+    </div>
+</body>
+</html>
